@@ -1,56 +1,47 @@
-String incomingByte ;  
-
-int LDR1 = A0;
+const int photoresistorPin0 = A0;
+const int photoresistorPin1 = A1;
+const int photoresistorPin2 = A2;
+const int photoresistorPin3 = A3;
+const int photoresistorPin4 = A4;
+const int photoresistorPin5 = A5;
+//String incomingByte;
 
 void setup() {
-
+  // Start serial communication
   Serial.begin(9600);
-
-  pinMode(LED_BUILTIN, OUTPUT);
-
-  pinMode(LDR1, INPUT);
-
 }
+
 void loop() {
-
-  if (Serial.available() > 0) {
-
-    int SLDR1 = analogRead(LDR1);
-      if (SLDR1 <= 400){//if the photoresistor detects less light it plays a note
-      Serial.write("on");
-      }
-      else{//if the photoresistor detects  more light it stops the note
-      Serial.write("off");
-      }
-      delay(1000);
-    /*incomingByte = Serial.readStringUntil('\n');
-
-    if (incomingByte == "on") {
-
-      digitalWrite(LED_BUILTIN, HIGH);
-
-      Serial.write("Led on");
-
-      delay(1000);
-    }
-
-    else if (incomingByte == "off") {
-
-      digitalWrite(LED_BUILTIN, LOW);
-
-      Serial.write("Led off");
-
-      delay(1000);
-    }
-
-    else{
-
-     Serial.write("invald input");
-
-     delay(1000);
-
-    }*/
-
-  }
-
+  // Read the value from the photoresistor
+  int photoresistorValue0 = analogRead(photoresistorPin0);
+  int photoresistorValue1 = analogRead(photoresistorPin1);
+  int photoresistorValue2 = analogRead(photoresistorPin2);
+  int photoresistorValue3 = analogRead(photoresistorPin3);
+  int photoresistorValue4 = analogRead(photoresistorPin4);
+  int photoresistorValue5 = analogRead(photoresistorPin5);
+  
+ /* Serial.println(photoresistorValue0);
+  Serial.println(photoresistorValue1);
+  Serial.println(photoresistorValue2);
+  Serial.println(photoresistorValue3);
+  Serial.println(photoresistorValue4);
+  delay(19000);*/
+  if (photoresistorValue0 <=190)
+  {Serial.println("A0");
+  delay(500);}
+  else if (photoresistorValue1 <=190)
+  {Serial.println("A1");
+  delay(500);}
+  else if (photoresistorValue2 <=190)
+  {Serial.println("A2");
+  delay(500);}
+  else if (photoresistorValue3 <=190)
+  {Serial.println("A3");
+  delay(500);}
+  else if (photoresistorValue4 <=190)
+  {Serial.println("A4");
+  delay(500);}
+  else if (photoresistorValue5 <=190)
+  {Serial.println("A5");
+  delay(500);}
 }
